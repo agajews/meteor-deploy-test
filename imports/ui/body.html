@@ -1,0 +1,32 @@
+<body>
+    <div class="todolist">
+        {{> app}}
+    </div>
+</body>
+
+<template name="app">
+    <header>
+        <h1>Todo List</h1>
+
+        {{> hideCompleted}}
+        {{> loginButtons}}
+        {{#if currentUser}}
+            {{> taskForm}}
+        {{/if}}
+    </header>
+
+    {{> tasksContainer tasks=tasks}}
+</template>
+
+<template name="taskForm">
+    <form class="new-task">
+        <input type="text" name="text" placeholder="New task..." autocomplete="off"/>
+    </form>
+</template>
+
+<template name="hideCompleted">
+    <label class="hide-completed">
+        <input type="checkbox" />
+        Hide completed tasks
+    </label>
+</template>

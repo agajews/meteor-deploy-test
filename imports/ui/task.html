@@ -1,0 +1,26 @@
+<template name="tasksContainer">
+    <ul>
+        {{#each task in tasks}}
+            {{> taskBody task=task}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="taskBody">
+    <li class="{{#if task.checked}}checked{{/if}} {{#if task.private}}private{{/if}}">
+        <button class="delete-task">&times;</button>
+        <input type="checkbox" checked={{task.checked}} class="toggle-checked" />
+        {{#if isOwner}}
+            <button class="toggle-private">
+                {{#if task.private}}
+                    Private
+                {{else}}
+                    Public
+                {{/if}}
+            </button>
+        {{/if}}
+        <span class="task-text">
+            <strong>{{task.username}}</strong> - {{task.text}}
+        </span>
+    </li>
+</template>
